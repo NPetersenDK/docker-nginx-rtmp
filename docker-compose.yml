@@ -1,12 +1,11 @@
 version: "3.7"
 services:
-  # mqtt5 eclipse-mosquitto
-  mqtt5:
-    image: testnginx
-    container_name: testnginxcont
+  nginxrtmp:
+    image: ghcr.io/npetersendk/docker-nginx-rtmp:latest
+    container_name: nginxrtmp
     ports:
-      - "8000:80" #default mqtt port
-      - "1935:1935" #default mqtt port for websockets
+      - "8000:80" #default nginx port
+      - "1935:1935" #default RTMP port
     restart: unless-stopped
     volumes:
       - ./nginx.conf:/usr/local/nginx/conf/nginx.conf:ro

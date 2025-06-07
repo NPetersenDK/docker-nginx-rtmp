@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  # mqtt5 eclipse-mosquitto
+  mqtt5:
+    image: testnginx
+    container_name: testnginxcont
+    ports:
+      - "8000:80" #default mqtt port
+      - "1935:1935" #default mqtt port for websockets
+    restart: unless-stopped
+    volumes:
+      - ./nginx.conf:/usr/local/nginx/conf/nginx.conf:ro
+      - ./stat.xsl:/var/www/html/stat.xsl:ro
